@@ -1,0 +1,21 @@
+Loaded Program: [400] code | [0] data | [0] bss
+System Call: [0] invoked Fork
+Process [0] Fork: start at address [0xf0] with [12] pages memory
+System Call: [0] invoked Yield
+System Call: [1] invoked Yield
+System Call: [0] invoked Kill
+System Call: 0 invoked Kill
+Process [0] killed process [1]
+System Call: [0] invoked Exit
+Process [0] exits with status [0]
+No threads ready or runnable, and no pending interrupts.
+Assuming the program completed.
+Machine halting!
+
+Ticks: total 92, idle 0, system 50, user 42
+Disk I/O: reads 0, writes 0
+Console I/O: reads 0, writes 0
+Paging: faults 0
+Network I/O: packets received 0, sent 0
+
+Cleaning up...

@@ -1,0 +1,23 @@
+
+
+1.Create()
+How to test ?
+    ./userprog/nachos  -d x  -x ./test/CreateAndWrite
+
+2.Open()
+How to test ?
+    ./userprog/nachos  -d x  -x ./test/OpenAndWrite
+
+3.Close()
+How to test ?
+    ./userprog/nachos  -d x  -x ./test/OpenAndRead
+
+4.Read()
+How to test ?
+    ./userprog/nachos  -d x  -x ./test/OpenAndRead
+
+5.Write()
+How to test ?
+    ./userprog/nachos  -d x  -x ./test/OpenAndWrite
+
+

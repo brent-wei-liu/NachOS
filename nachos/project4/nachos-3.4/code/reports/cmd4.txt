@@ -1,0 +1,3 @@
+./nachos -d tb -x ../test/memory
+
+

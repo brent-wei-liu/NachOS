@@ -1,0 +1,171 @@
+Wei Liu                 Panther ID 4851633
+Hector Lopez Monroy     Panther ID 4891783
+Zhaowei Hou             Panther ID 5044130
+
+Exercise 1: Simple Threads Programming
+    Following is the running result, after we run the modified version of SimpleThread and ThreadTest().
+        *** thread 0 sees value 0
+        *** thread 1 sees value 0
+        *** thread 2 sees value 0
+        *** thread 3 sees value 0
+        *** thread 0 sees value 1
+        *** thread 2 sees value 1
+        *** thread 3 sees value 1
+        *** thread 1 sees value 2
+        *** thread 0 sees value 2
+        *** thread 3 sees value 2
+        *** thread 1 sees value 3
+        *** thread 0 sees value 3
+        *** thread 2 sees value 4
+        *** thread 3 sees value 4
+        *** thread 1 sees value 4
+        *** thread 0 sees value 5
+        *** thread 2 sees value 5
+        *** thread 1 sees value 6
+        *** thread 3 sees value 6
+        Thread 0 sees final value 6
+        *** thread 2 sees value 7
+        Thread 1 sees final value 7
+        Thread 3 sees final value 8
+        Thread 2 sees final value 8
+        
+    In new version of nachos global variable "SharedVariable" located in "data section",
+which share by all threads. We folked 4 threads. Every thread has its own "stack section".
+Every thread has a local variable "val", located in "stack" of that thread.
+    In new version of SimpleThread(), every thread get the global variable "SharedVariable",
+then Relinquish the CPU to other threads before set the global variable with local variable. 
+    So , the final value of "SharedVariable" is 5.
+    Especially when we open the interrupt using command "./nachos -rs 4", the
+    running result is:
+            *** thread 0 sees value 0
+            *** thread 1 sees value 0
+            *** thread 2 sees value 0
+            *** thread 3 sees value 0
+            *** thread 0 sees value 1
+            *** thread 2 sees value 1
+            *** thread 3 sees value 1
+            *** thread 1 sees value 2
+            *** thread 0 sees value 2
+            *** thread 3 sees value 2
+            *** thread 1 sees value 3
+            *** thread 0 sees value 3
+            *** thread 2 sees value 4
+            *** thread 3 sees value 4
+            *** thread 1 sees value 4
+            *** thread 0 sees value 5
+            *** thread 2 sees value 5
+            *** thread 1 sees value 6
+            *** thread 3 sees value 6
+            Thread 0 sees final value 6
+            *** thread 2 sees value 7
+            Thread 1 sees final value 7
+            Thread 3 sees final value 8
+            Thread 2 sees final value 8
+The threads see different value.
+
+After we use Semaphore to syncronize between threads, the threads get the
+same value of shared value.
+
+How to test?  Edit thread/Makefile DEFINES as follow:
+DEFINES = -DTHREADS -DCHANGED -DHW1_SEMAPHORES
+#DEFINES = -DTHREADS -DCHANGED -DHW1_LOCKS
+#DEFINES = -DTHREADS -DCHANGED -DHW1_ELEVATOR
+cd thread && rm -rf *.o
+make
+./nachor -rs 4
+
+2.Exercise 2: Lock
+How to test?  Edit thread/Makefile DEFINES as follow:
+#DEFINES = -DTHREADS -DCHANGED -DHW1_SEMAPHORES
+DEFINES = -DTHREADS -DCHANGED -DHW1_LOCKS
+#DEFINES = -DTHREADS -DCHANGED -DHW1_ELEVATOR
+cd thread && rm -rf *.o
+make
+./nachor -rs 4
+
+Exercise 3 and 4 : Condition Variable and Elevator.
+We use condition variable to finish exercise 4.
+How to test?  Edit thread/Makefile DEFINES as follow:
+#DEFINES = -DTHREADS -DCHANGED -DHW1_SEMAPHORES
+#DEFINES = -DTHREADS -DCHANGED -DHW1_LOCKS
+DEFINES = -DTHREADS -DCHANGED -DHW1_ELEVATOR
+cd thread && rm -rf *.o
+make
+./nachor -rs 4
+
+The input is 
+
+ArrivingGoingFromTo(4,9);
+ArrivingGoingFromTo(2,6);
+ArrivingGoingFromTo(2,5);
+ArrivingGoingFromTo(6,4);
+ArrivingGoingFromTo(4,8);
+ArrivingGoingFromTo(6,4);
+ArrivingGoingFromTo(4,9);
+ArrivingGoingFromTo(8,2);
+ArrivingGoingFromTo(3,6);
+ArrivingGoingFromTo(3,7);
+
+The output is:
+
+Person 0 wants to go to floor 9 from floor 4.
+Person 1 wants to go to floor 6 from floor 2.
+Person 2 wants to go to floor 5 from floor 2.
+Person 3 wants to go to floor 4 from floor 6.
+Person 4 wants to go to floor 8 from floor 4.
+Person 5 wants to go to floor 4 from floor 6.
+Person 6 wants to go to floor 9 from floor 4.
+Person 7 wants to go to floor 2 from floor 8.
+Person 8 wants to go to floor 6 from floor 3.
+Person 9 wants to go to floor 7 from floor 3.
+Elevator arrives on floor 1.
+Elevator arrives on floor 2.
+Person 1 get into the elevator.
+Person 2 get into the elevator.
+Elevator arrives on floor 3.
+Person 8 get into the elevator.
+Person 9 get into the elevator.
+Elevator arrives on floor 4.
+Person 0 get into the elevator.
+Elevator arrives on floor 5.
+Person 2 get out of the elevator.
+Elevator arrives on floor 6.
+Person 1 get out of the elevator.
+Person 8 get out of the elevator.
+Person 3 get into the elevator.
+Person 5 get into the elevator.
+Elevator arrives on floor 7.
+Person 9 get out of the elevator.
+Elevator arrives on floor 8.
+Person 7 get into the elevator.
+Elevator arrives on floor 9.
+Person 0 get out of the elevator.
+Elevator arrives on floor 10.
+Elevator arrives on floor 9.
+Elevator arrives on floor 8.
+Elevator arrives on floor 7.
+Elevator arrives on floor 6.
+Elevator arrives on floor 5.
+Elevator arrives on floor 4.
+Person 3 get out of the elevator.
+Person 5 get out of the elevator.
+Person 4 get into the elevator.
+Person 6 get into the elevator.
+Elevator arrives on floor 3.
+Elevator arrives on floor 2.
+Person 7 get out of the elevator.
+Elevator arrives on floor 1.
+Elevator arrives on floor 2.
+Elevator arrives on floor 3.
+Elevator arrives on floor 4.
+Elevator arrives on floor 5.
+Elevator arrives on floor 6.
+Elevator arrives on floor 7.
+Elevator arrives on floor 8.
+Person 4 get out of the elevator.
+Elevator arrives on floor 9.
+Person 6 get out of the elevator.
+
+
+
+

@@ -1,0 +1,49 @@
+Loaded Program: [544] code | [80] data | [0] bss
+System Call: [0] invoked [Fork]
+Memory Usage Rate = 10.16%
+Memory Usage Rate = 20.31%
+Process [0] Fork: start at address [224] with [13] pages memory
+PID (1) assigned for new thread
+Forking thread "forked thread" with func = 0x804db0e, arg = 134717648
+Putting thread forked thread on ready list.
+I am the Parent!
+I am the Parent!
+I am the Parent!
+I am the Parent!
+I am the Parent!
+System Call: [0] invoked [Join(1)]
+Just before setting semaphore in blocked mode
+Sleeping thread "main"
+Switching from thread "main" to thread "forked thread"
+I am the child
+I am the child
+I am the child
+I am the child
+I am the child
+I am the child
+System Call: [1] invoked [Exit]
+Process [1] exits with [2]
+Putting thread main on ready list.
+Finishing thread "forked thread"
+Finishing AddrSpace!
+Memory Usage Rate = 10.16%
+Sleeping thread "forked thread"
+Switching from thread "forked thread" to thread "main"
+Now in thread "main"
+Deleting thread "forked thread"
+I am the Parent, waked up by child!
+I am the Parent, waked up by child!
+I am the Parent, waked up by child!
+I am the Parent, waked up by child!
+I am the Parent, waked up by child!
+System Call: [0] invoked [Exit]
+Process [0] exits with [1]
+Machine halting!
+
+Ticks: total 392, idle 0, system 60, user 332
+Disk I/O: reads 0, writes 0
+Console I/O: reads 0, writes 0
+Paging: faults 0
+Network I/O: packets received 0, sent 0
+
+Cleaning up...

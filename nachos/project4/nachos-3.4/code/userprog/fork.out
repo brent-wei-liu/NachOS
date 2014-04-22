@@ -1,0 +1,50 @@
+Loaded Program: [592] code | [16] data | [0] bss [13]numPages
+L [0]: [0] -> [0]
+L [0]: [2] -> [1]
+L [0]: [12] -> [2]
+L [0]: [3] -> [3]
+L [0]: [1] -> [4]
+L [0]: [4] -> [5]
+System Call: [0] invoked Fork
+Process [0] Fork: start at address [0xf0] with [13] pages memory
+System Call: [0] invoked Yield
+L [1]: [1] -> [6]
+L [1]: [12] -> [7]
+L [1]: [2] -> [8]
+L [1]: [4] -> [9]
+L [1]: [0] -> [10]
+System Call: [1] invoked Exit
+Process [1] exits with [100]
+System Call: [0] invoked Fork
+Process [0] Fork: start at address [0xf0] with [13] pages memory
+System Call: [0] invoked Yield
+L [1]: [1] -> [6]
+L [1]: [12] -> [7]
+L [1]: [2] -> [8]
+L [1]: [4] -> [9]
+L [1]: [0] -> [10]
+System Call: [1] invoked Exit
+Process [1] exits with [100]
+System Call: [0] invoked Fork
+Process [0] Fork: start at address [0xf0] with [13] pages memory
+System Call: [0] invoked Yield
+L [1]: [1] -> [6]
+L [1]: [12] -> [7]
+L [1]: [2] -> [8]
+L [1]: [4] -> [9]
+L [1]: [0] -> [10]
+System Call: [1] invoked Exit
+Process [1] exits with [100]
+System Call: [0] invoked Exit
+Process [0] exits with [4]
+No threads ready or runnable, and no pending interrupts.
+Assuming the program completed.
+Machine halting!
+
+Ticks: total 5060, idle 0, system 110, user 4950
+Disk I/O: reads 0, writes 0
+Console I/O: reads 0, writes 0
+Paging: faults 21
+Network I/O: packets received 0, sent 0
+
+Cleaning up...

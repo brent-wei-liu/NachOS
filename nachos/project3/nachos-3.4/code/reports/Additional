@@ -1,0 +1,27 @@
+Additional Instructions for Implementation Page
+
+
+NACHOS Files:
+We will be using NACHOS files exclusively. NACHOS Files are similar to Unix files except they are stored on a virtual disk that is implemented as one big Unix file. The interface to Create, Open, Close, WriteAt and ReadAt to those files are defined in filesys/filesys.cc, filesys/openfile.cc and filesys/filehdr.h. You may want to look through those files when getting ready to call these functions for the first time.
+
+The following steps are known to work well. However, you could choose to implement these system calls any way you like.
+
+10 Steps to an I/O Enabled NACHOS:
+Create a SysOpenFile object class that contains a pointer to the file system's OpenFile object as well as the systems (int)FileID and (char *)fileName for that file and the number of user processes accessing currently it. Declare an array of SysOpenFileobjects for use by all system calls implemented in part 2.
+Create a UserOpenFile object class that contains the (char *)fileName, an index into the global SysOpenFiletable and an integer offset represeting a processes current position in that file.
+Modify the AddrSpace's PCB to contain an array of OpenUserFiles. Limit the number to something reasonable, but greater than 20. Write a method (in PCBManager) that returns an OpenUserFileobject given the fileName.
+Implement Create(char *fileName). This is a straight forward call that should simply get the fileName from user space then use fileSystem->Create(fileName,0)to create a new instance of an OpenFile object. Until a user opens the file for IO it is not necessary to do anything further.
+Implement Open(char *fileName);. This function will use an OpenFile object created previously by fileSystem->Open (fileName). Once you have this object, check to see if it is already open by some other process in the global SysOpenFile table. If so, incriment the userOpens count. If not, create a new SysOpenFile and store it's pointer in the global table at the next open slot. You can obtain the FileID by looking up the name in your SysOpenFile table. 
+
+Then create a new instance of an OpenUserFile object (given a SysOpenFile object) and store it in the currentThread's PCB's OpenUserFile array. 
+
+Finally, return the FileIDto the user.
+Implement a function to Read/Write into MainMem and a buffer given a staring virtual address and a size. It should operate in the same way AddrSpace::ReadFile writes into the main memory. 
+It may help to put the section of the code in ReadFile into a "helper" function called userReadWrite() that is general enough that both ReadFile(), myRead() and myWrite() can call. It need only be parameterized by the type of operation to be performed (Read or Write). 
+
+When called by Write(), It will read from the MainMem addressed by the virtual addresses. It writes into the given (empty) buffer. Write(), will then put that buffer into an OpenFile. When called by Read(), It will write into MainMem the data in the given (full) buffer that Read() read from an OpenFile.
+Implement Write(char *buffer, int size, OpenFileId (int)id); First you will need to get the arguments from the user by reading registers 4-6. If the OpenFileID is == ConsoleOutput (syscall.h), then simply printf(buffer). Otherwise, grab a handle to the OpenFile object from the user's openfile list pointing to the global file list. Why can't you just go directly to the global file list?... because the user may not have opened that file before trying to write to it. Once you have the OpenFile object, you should fill up a buffer created of size 'size+1' using your userReadWrite() function. Then simply call OpenFileObject->WriteAt(myOwnBuffer,size,pos)".
+Implement Read(char *buffer, int size, OpenFileId id); Get the arguments from the user in the same way you did for Write(). If the OpenFileID == ConsoleInput (syscall.h), use a routine to read into a buffer of size 'size+1' one character at a time using getChar(). Otherwise, grab a handle to the OpenFile object in the same way you did for Write() and use OpenFileObject->ReadAt(myOwnBuffer,size,pos) to put n characters into your buffer. pos is the position listed in the UserOpenFile object that represents the place in the current file you are writing to. With this method, you must explictly put a null byte after the last character read. The number read is returned from ReadAt(). 
+
+Now that your buffer is full of the read, you must write that buffer into the user's memory using the userReadWrite()function. Finally, return the number of bytes written.
+Test your system calls using your own test programs. Now that both projects 2 and 3 are finished, all Nachos test programs should work.

@@ -1,0 +1,46 @@
+Additional Instructions Page
+
+
+mplementation Guide
+Threads and Processes:
+Thread::Fork() spawns a new kernel thread that uses the same AddrSpace as the thread that spawned it. If that address space is duplicated and not shared, it is no longer a kernel thread but a Forked Process. If that AddrSpace instead contains code and data loaded in from a separate file, it is no longer a forked process, but an executed process. The details of Fork() and Exec() are covered in steps 1) and 7) below.
+
+System Calls:
+In code/userprog/exception.cc, put function calls for each system call. Just print debug statements in these functions for now, so you can see when system calls get executed. The function may need to return or take an argument. Because the argument lies in user space, you will need to transfer it over using machine register reads and writes. A sample stub illustrating this is shown below.
+        case SC_Join: {
+          int result = myJoin(machine->ReadRegister(4));
+          machine->WriteRegister(2, result);
+          break;
+        }  
+  
+If the system calls: Fork(), Yeild(), Exec(), Join() and Exit() are implemented in that order, you will not have to worry about the call you are currently working on depending upon unimplemented calls.
+Remember that the last thing the ExceptionHandler function needs to do when executing a system call is increment the program counter. Write a helper function to do this - it needs to update PCreg, NextPCreg, and PrevPCreg. They should all incriment by 32 bits (one word). An integer in NACHOS is 8 bits wide.
+10 Steps to a Multi-Programmed Nachos
+Implement Fork(). Fork will create a new kernel thread and set it's AddrSpace to be a duplicate of the CurrentThread's space. It sets then Yields(). The new thread runs a dummy function that will will copy back the machine registers, PC and return registers saved from before the yield was performed. You did save the PC, return and other machine registers didn't you? 
+
+Duplicating the AddrSpace requires the implementation of a Memory Manager detailed in steps 2-4. Fork() will not work completely until the completion of step 4. Don't get stuck on step 1), steps 2-4 are much more important.
+Write a Memory Manager that will be used to facilitate contiguous virtual memory. The amount of memory available to the user space is the same as the amount of physical memory, it's not until the virtual memory project that you will have to implement swapping. 
+
+You will need just two methods at first 1) getPage() allocates the first clear page and 2) clearPage(int i) takes the index of a page and frees it. You can use a bitmap (in code/userprog/bitmap.*) with one bit per page to track allocation or use your own integer array, which ever you prefer. 
+
+Modify AddrSpace (code/userprog/addrspace.*) to use the memory manager. first, modify the page table constructors to use pages allocated by your memory manager for the physical page index. The later modification will come in step 4.
+Write the AddrSpace::Translate function, which converts a virtual address to a physical address. It does so by breaking the virtual address into a page table index and an offset. It then looks up the physical page in the page table entry given by the page table index and obtains the final physical address by combining the physical page address with the page offset. It might help to pass a pointer to the space you would like the physical address to be stored in as a paramter. This will allow the function to return a boolean TRUE or FALSE depending on whether or not the virtual address was valid. If confused, consult AOSC 9.4.1 or Machine::Translate() in machine/translate.cc
+Write the AddrSpace::ReadFile function, which loads the code and data segments into the translated memory, instead of at position 0 like the code in the AddrSpace constructor already does. This is needed not only for Exec() but for the initial startup of the machine when executing any test program with virtual memory. 
+
+You can use the following prototype for the function.
+   int AddrSpace::ReadFile(int virtAddr, 
+                           OpenFile* file, 
+                           int size, 
+                           int fileAddr) {
+   
+You will also need to use the functions: File::ReadAt(buff,size,addr) and bcopy(src,dst,num) as well as the memory locations at machine->mainMemory[physAddr].
+At this point, test programs should work the same as before. That is, the halt program and other system calls will still operate the way they did before you modified AddrSpace. Also Fork() should be working. Test your implementation appropriately.
+
+Write the PCB and a process manager. Create a PCB class that will store the necessary information about a process. Don't worry about putting everything in it right now, you can always add more as you go along. To start, it should have a PID, parent PID, and Thread*. The process manager should do the same thing as the memory manager - it has getPID and clearPID methods, which return an unused process id and clear a process id respectively. Again, use a bitmap or similar integer array. You'll also need an array of PCB* to store the PCBs. Modify the AddrSpace constructors to include a PCB as an attribute.
+Implement Yield(). Given that forked processes are almost the same as kernel threads, this one should be trivial.
+Implement Exec(). Exec is creating a new process (kernel thread) with new code and data segments loaded from the OpenFile object constructed from the filename passed in by the user. In order to get that file name you will have to write a function that copies over the string from user space. This function will start copying memory from the physical address pointed to by the virtual address in machine->ReadRegister(4). It should go until it hits a NULL byte. 
+
+Fork the new thread to run a dummy function that sets the machine registers straight and runs the machine. The calling thread should yield to give control to the newly spawned thread. At this point you should be able to call test files from other test using Exec(someTestFile) from someOtherTestFile.c (in the test/ dir).
+Implement Join(). Join should force the current running thread to wait for some process to finish. The PCB manager can keep track of who is waiting for who using a condition variable for each PCB.
+Implement Exit(int status). This function should set set the status in the PCB being exited. It should also force any threads waiting on the exiting process to wake up.
+Test your system calls using your own test programs. If you have time, test using some programs to do complex and even malicious things.

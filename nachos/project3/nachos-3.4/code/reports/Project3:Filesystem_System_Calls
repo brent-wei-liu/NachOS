@@ -1,0 +1,15 @@
+Project 3: Filesystem System Calls
+
+For this assignment, you are to implement the filesystem system calls: Create, Open, Read,Write, and Close. The semantics of these calls are specified in syscall.h. 
+
+You should extend your file system implementations to handle the console as well as normal files. To support the system calls that access the console device, you will probably find it useful to implement a SynchConsole class that provides the abstraction of synchronous access to the console. However, this is not a strict requirement if you feel an alternate implementation is easier for you. The file progtest.cc has the beginning of a SynchConsole implementation.
+
+
+Required Output Prints
+In order for us to see how your program works, some debugging information must be added in your code. You should print out the following information:Which system call is called? Whenever a system call is invoked, print: 
+
+System Call: [pid] invoked [call]
+
+where [pid] is the identifier of the process (SpaceID) and [call] is the name of one of the system calls that you had to implement. Just give the name without parentheses (e.g., Create, Write).
+
+

@@ -1,0 +1,132 @@
+
+Tips for Project 4 Page
+
+Hints for Project 4
+
+ (mostly from Thomas Narten's Roadmap)
+
+To get the page-faulting virtual address, you should be accessing machine->ReadRegister(BadVAddrReg);
+(BadVAddrReg is defined in machine.h) Implement a simple version of page replacement first 
+to test that basic swapping works ok. 
+
+
+It is easiest to test the VM algorithms by running only a single process and have it page against itself. It's a lot easier to see what is happening this way. Add debug print statements using the DEBUG()routine; I used "p" for paging to turn it on. I found it immensely useful to add debugging statements at the following points:
+when a page is reclaimed (e.g., taken away from a process and made available to another one), indicate which process (address space) was forced to give up a page, which virtual page number it gave up, and the corresponding page frame number in physical memory.
+In order to print the name of the address space that was forced to give up a page, add a "char *name" field to the AddrSpace object and initialize it to the name of the Nachos binary when the space is initially created.
+
+Whenever a process has a page fault, print the address space that caused the fault, which virtual page number the fault was for, and the physical page frame that was used to satisfy the fault.
+Reduce the amount of available physical memory to insure lots of page faults. I got good results with 25 pages of real memory. Also, the matmultprogram in the test subdirectory uses quite a lot of memory. It is a good program to run with the "-x ../test/matmult" option to nachos.
+Another good test is to use a modified shell (the one that allows you to run a process in background by putting a '&' character before the file name). Run the matmult program in background, and then also run the console1 and console2 programs at the same time. You should be seeing alternating A's and B's as before (if using the "-rs" Nachos option).
+
+You will need to maintain a data structure called a core map.The core map is a table containing an entry for every physical page frame in the system. For each page frame, a core map entry keeps track of:
+Is the page frame allocated or free?
+Which address space is using this page?
+which virtual page number within space?
+Plus possibly other flags, such as whether the page is currently locked in memory for I/O purposes
+When the system needs to find a free page, but none are available, the memory manager inspects the core map to find good candidate replacement pages. Of course, the memory manager looks at the page table entry for that frame (via the ``space'' pointer) to determine if a page has been used recently, is modified, etc.
+
+Start with a simple page replacement policy. I simply reclaimed frames in sequential order starting with frame 0. That is, first reclaim 0, than 1, etc., wrapping around when you get to the end of the list. This is obviously NOT an ideal policy, but it works for the purposes of testing your implementation (in fact, by being a ``bad'' policy, it tests your code surprisingly well). Once the rest of your code is debugged, then worry about implementing a better policy.
+
+You need to think very carefully about mutual exclusion. For example, the page replacement process may select frame 13, but find that it needs to write it to backing store before it can be reclaimed. This will take a long time (I/O is slow), and in the meantime the process that was using that frame may be selected by the scheduler and start running again. What happens when it tries to reference that frame? It will surely notice that the page is gone, and try to reload it from backing store. Will it get the proper copy? Will it read the page only after the page replacement object has written it? There are all sorts of race conditions like that can potentially mess things up. So be sure to use appropriate mutual exclusion in the paging routines.
+You will need to maintain a "shadow" page table for each address space. The existing page table defined by Nachos has a specific format dictated by the address translation hardware. You will need to keep additional information about each page, thus the shadow table. The shadow table keeps track of such things as the current state of the page (e.g., loaded in memory, needs to be loaded from the text or swap file, etc.)
+You will need to allocate backing store (swap space) for each address space. One approach is to create a file (e.g., swap.PID) when the address space is created, open it, and then use it while the process is running. The file should be closed and removed when the process terminates.
+When a page fault takes place, there are three scenarios:
+
+The page belongs to the stack or heap section, and should be initialized to 0. This is the easiest case to handle, because you only have to find a free page and zero it out. There is no need for disk I/O.
+The page should be loaded from the swap file. This simply involves reading the page in the swap file at the offset corresponding to the page being accessed. For example, page number 7 would correspond to an offset of 7*PageSize = 7*128 = 896.
+The page contains instructions or initialized data and should be loaded from the original binary file.
+This is the most difficult case. You will need to figure out what offset within the text file the desired page begins at. To simplify matters, assume that the text and initialized data segments are laid out contiguously in the Nachos binary file (they are). That way, you only need to keep track of where the text segment begins (it doesn't start at offset 0, the NOFF header resides there) and the combined length of the text and data segments are.
+
+To handle the three above cases, you will need to keep two OpenFile objects with the AddrSpace object. One for the text file, the other for the swap file. In addition, for each page in an address space's shadow page table, maintain a state variable that indicates what state the page is in. For example, LOADFROMTEXT, LOADFROMSWAP and ZEROFILL. The state of a page is initialized when a process is created, and changes only if the memory manager reclaims the page, finds it modified, and writes it to backing store.
+
+You will need routines that lock a range of addresses into memory (and unlock them later). For example, when a program does a system call to read data from a file, it provides a pointer to the buffer where it wants the file contents placed. The Read system call first reads the desired data into its own buffer, and then copies the data into the user buffer using the machine::WriteMem() operations. In order for this operation to succeed, the pages holding the buffer must be in memory. Thus, you will want to lock the pages associated with the buffer into memory before attempting to place data in the buffer. Once the data has been copied to the buffer, the pages can be unlocked again. For example, the routine LockMemory() might take a virtual address and length, insure that all pages corresponding to the specified addresses indicated are loaded and present in physical memory and lock them into place. While locked in memory, the memory manager would not reclaim them.
+
+Some more pointers from another source
+
+Virtual memory works in the following way. All addresses generated by a user process are virtual addresses. Address translation hardware checks every such address generated by a user process (read/write, instruction/data) as it tries to map it to the corresponding physical address. If the page that contains the virtual address referenced by the user process is currently resident in physical memory, the translation proceeds as it used to without virtual memory. If, on the other hand, the page is not in physical memory, a Page Fault Exception is generated. This causes the processor to leave the user mode and switch to kernel mode. The kernel responds a PageFaultException by running a routine (called the Page fault Handler) whose purpose is to bring the referenced page into physical memory (for this, it may have to move some other page to the disk-based backing store). In general, the Page Fault Handler needs to perform the following operations:
+
+Select a physical page frame that will be used to load the required page. This is referred to as the page replacement policy.
+If the selected page frame is currently in use and the data on the page has been modified, write the data in the page frame to backing store.
+Find the required page (the page that is to be loaded) on disk.
+Load the page into physical memory.
+Update page-tables to reflect the change.
+Nachos already contains code to do virtual to physical translation and to raise a PageFaultException.
+
+
+
+Make sure that you understand the TranslationEntry class as given in "machine/translate.h". Ask yourself why each component of a page-table has been included. See the method Machine::Translate in "machine/translate.cc" to understand how these fields are used. All the flags in this structure have been described in class.
+
+Trace how the MIPS simulator (in "machine/mipssim.cc") executes instructions. As a part of executing an instruction, the machine accesses main memory for loading the instruction itself ([code segment]) and possibly for its operands ([data/stack segment]). Figure out how memory access is implemented and where the virtual to physical translation is performed. It is during the translation process that the machine can determine if the virtual address it is trying to access belongs to a page which does not reside in physical memory. Figure out how, when and where the PageFaultException is thrown.
+
+This Exception results in control being passed back to the kernel and is supposed to be handled in a manner similar to system calls. Add code to exception.cc to call a stub routine when this Exception is raised. This will be your page fault handler. As a part of raising an Exception, the processor saves some information that will be used by the kernel to handle the Exception. Figure out what information is set up and in which registers.
+
+You can implement a page replacement algorithm by writing a page fault handler. The page fault handler gets control as a result of the machine raising a page fault exception. The handling of this exception involves the following tasks:
+
+· If there is no unused frame in memory, scan the physical memory for selecting a victim page.
+
+· If necessary, allocate space on the backing store to receive the contents of the victim page (assuming that it is dirty and needs flushing).
+
+· Initiate I/O to write the contents of the victim page to the backing store.
+
+· Adjust the page table for the process to which the victim page belongs to reflect the fact that it is no longer resident in memory.
+
+· Locate the page for which the fault was generated on the backing store; initiate I/O to load the page into the page frame selected in the previous steps.
+
+· Adjust the page table for the faulting process to reflect the fact that the desired page is now resident in memory.
+
+· Return to user mode and restart the instruction that caused the fault. Restarting the instruction might involve readjusting the instruction pointer so that the machine tries to re-execute the instruction for which the page-fault was generated in the first place.
+
+Understand and improve the algorithms and structures discussed in class or design your own overall algorithms and structures.
+Modify a bunch of files in related files, the most important is:
+1) userprog/exception.cc,addrspace.cc, addrspace.h,progtest.cc
+
+2) machine/machine.h,machine.cc, translate.h,translate.cc
+
+You maybe need modify more files dependent on your specific algorithms.
+
+Use test programs maltus.c and halt.c to test your program.
+In userprog dir, type nachos x ../test/maltus or nachos x ../test/halt
+
+You can also write your own test programs.
+
+Hints :
+
+1. You can implement VM algorithms by running only a single process and have it page against itself. Add debug print statements using the DEBUG() routine. It is useful to add debugging statements at the following points:
+
+· when a page is reclaimed, indicate which virtual page number was given up, and the corresponding page frame number in physical memory.
+
+· Whenever a process has a page fault, print the virtual page number the fault was for.
+
+2. Reduce the amount of available physical memory to insure lots of page faults. For example, 25 pages of real memory will lead to a good result. Also, the matmult program in the test subdirectory uses quite a lot of memory. It is a good program to run with the "-x ../test/matmult" option to nachos.
+
+3. You will need to maintain a data structure called a core map. The core map is a table containing an entry for every physical page frame in the system. For each page frame, a core map entry keeps track of:
+
+· Is the page frame allocated or free?
+
+· Which address space is using this page?
+
+· which virtual page number within space?
+
+· Plus possibly other flags, such as whether the page is currently locked in memory for I/O purposes
+
+· When the system needs to find a free page, but none are available, the memory manager inspects the core map to find good candidate replacement pages. Of course, the memory manager looks at the page table entry for that frame (via the ``space'' pointer) to determine if a page has been used recently, is modified, etc.
+
+Start with a simple page replacement policy. For example, you can reclaim frames in sequential order starting with frame 0. That is, first reclaim 0, than 1, etc., wrapping around when you get to the end of the list. This is obviously NOT an ideal policy, but it works for the purposes of testing your implementation (in fact, by being a ``bad'' policy, it tests your code surprisingly well). Once the rest of your code is debugged, then worry about implementing a better policy.
+
+4. The existing page table defined by Nachos has a specific format dictated by the address translation hardware. You will need to keep additional information about each page. Add the required field at the end of the class TranslationEntry to keep track of such things as the current state of the page (e.g., loaded in memory, needs to be loaded from the text or swap file, etc.)
+
+5. You will need to allocate backing store (swap space) for each address space. One approach is to create a file (e.g., swap.PID) when the address space is created, open it, and then use it while the process is running. The file should be closed and removed when the process terminates.
+
+When a page fault takes place, there are three scenarios:
+
+1. The page belongs to the stack or heap section, and should be initialized to 0. This is the easiest case to handle, because you only have to find a free page and zero it out. There is no need for disk I/O.
+
+2. The page should be loaded from the swap file. This simply involves reading the page in the swap file at the offset corresponding to the page being accessed. For example, page number 7 would correspond to an offset of 7*PageSize = 7*128 = 896.
+
+3. The page contains instructions or initialized data and should be loaded from the original binary file.
+
+This is the most difficult case. You will need to figure out what offset within the text file the desired page begins at. To simplify matters, assume that the text and initialized data segments are laid out contiguously in the Nachos binary file (they are). That way, you only need to keep track of where the text segment begins (it doesn't start at offset 0, the NOFF header resides there) and the combined length of the text and data segments.
+
+To handle the three above cases, you will need to keep two OpenFile objects with the AddrSpace object. One for the text file, the other for the swap file.
+
+6. You can use matmult.c and halt.c in the test directory as the test programs. Make sure you have modified /code/userprog/exception.cc to support exit system call. Also you can write your own test programs. In either case, you should recompile the test programs by running gmake under the test directory. Please explain your policy in your design document: description of implementation.

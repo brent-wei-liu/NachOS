@@ -1,0 +1,45 @@
+virtualPage[0] location[0]
+virtualPage[1] location[0]
+virtualPage[2] location[0]
+virtualPage[3] location[0]
+virtualPage[4] location[2]
+virtualPage[5] location[2]
+virtualPage[6] location[2]
+virtualPage[7] location[2]
+virtualPage[8] location[2]
+virtualPage[9] location[2]
+virtualPage[10] location[2]
+virtualPage[11] location[2]
+Loaded Program: [384] code | [32] data | [0] bss [12]numPages
+Memory Usage Rate = 0.00%
+PageFaultException:vpn[0]
+Read From EXECUTABLE offset:0x28 vpn[0]->frame[0]
+
+Memory Usage Rate=3.12%
+PageFaultException:vpn[2]
+Read From EXECUTABLE offset:0x128 vpn[2]->frame[1]
+
+Memory Usage Rate=6.25%
+PageFaultException:vpn[11]
+Memory Usage Rate=9.38%
+PageFaultException:vpn[1]
+Read From EXECUTABLE offset:0xa8 vpn[1]->frame[3]
+
+Memory Usage Rate=12.50%
+debug:type[2]
+System Call: [0] invoked Exec.
+PageFaultException:vpn[3]
+Read From EXECUTABLE offset:0x1a8 vpn[3]->frame[4]
+
+Memory Usage Rate=15.62%
+Exec Program: 0 loading ["est/memory"]
+Error, unable to open file: [est/memory]
+Machine halting!
+
+Ticks: total 29, idle 0, system 10, user 19
+Disk I/O: reads 0, writes 0
+Console I/O: reads 0, writes 0
+Paging: faults 5
+Network I/O: packets received 0, sent 0
+
+Cleaning up...

@@ -1,0 +1,43 @@
+Wei Liu                 Panther ID 4851633
+Hector Lopez Monroy     Panther ID 4891783
+Zhaowei Hou             Panther ID 5044130
+
+1.Installing Nachos
+
+Connect to linux server. Use command “wget” to download the nachos of version 3.4, 
+and then unzip the package using tar commands. After that I got the 'nachos-3.4' 
+directory. Then go into the 'code' directory and get ready to install. Because I 
+have GCC and C++ installed already in the computer, I can directly run 'make' to 
+compile the system. After compilation, all the installation is done.
+
+
+2.Run the test
+
+When running './nachos -x ../test/halt' the program executes the only instruction 
+it has, halting the execution and finish execution. Then, when running 
+'./nachos -s -x ../test/halt' as single-step mode, the program runs step-by-step 
+and leave a prompt showing the registers of the simulated machine (0-39) and also 
+waiting to accept keyboard inputs, and will stop after several times of inputs or 
+receive the specific instruction like 'c'. In the end of both command executions 
+above the program finish and Nachos prints out current status of the system like 
+Disk I/O and Memory I/O, etc.
+
+
+3.Mechanisms of thread scheduling and thread switching
+
+The "Thread class", "Schedule class" and "SWITCH Function" plays a major role in 
+thread scheduling and thread switching.
+
+The "Thread class" defines a "thread control block", which represents a single 
+thread of execution. The Thread class maintains the processor registers(especially 
+the program counter, which point to the running code of this thread),status 
+(running/ready/blocked) and the execution stack.
+
+The "Schedule class" is responsible for implementation of "CPU time sharing" between 
+threads, in another words "Muti-tasking". It maintains a queue of threads that are 
+ready to run ---- readyList. When the scheduler starts to schedule thread, it pops a 
+thread from readyList, and call SWITH to run the new thread.
+
+The "SWITCH function" in “switch.s” is responsible for saving registers of old 
+thread into PCB and load context of new thread into registers, then jumps or returns 
+to new thread code to run the new thread.

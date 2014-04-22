@@ -1,0 +1,130 @@
+Fork() Join() Kill() Exit() Yield() Exec()
+
+
+1.Fork()
+How to test ?
+    ./userprog/nachos  -x ./test/fork
+    Output file: ./test/fork.out
+
+Which code files we modified?
+    ./userprog/exception.cc
+    ./userprog/progtest.cc
+    ./userprog/addrspace.cc
+    ./test/fork.c
+
+How to impliment?
+    Add a bitmap in system.cc to record the free frames in physical memory.
+    Add Addrspace::Clone() function in addrspace.cc to clone a memory space of
+    current thread. In brief, calling this function will create a new address space that is an exact copy of the original.
+
+2.Exec()
+How to test ?
+    ./userprog/nachos -x ./test/exec
+    If NumPhysPages == 32 
+        Output file: ./test/exec.out.32pages
+    If NumPhysPages == 64
+         Output file: ./test/exec.out.64pages
+
+Which code files we modified?
+    ./userprog/exception.cc
+    ./userprog/progtest.cc
+    ./userprog/addrspace.cc
+    ./userprog/syscall.h (add 'size' arguement to Exec function)
+    ./test/exec.c
+    ./test/execchild.c
+
+How to impliment?
+    Add a bitmap in system.cc to record the free frames in physical memory.
+    Modify Addrspace::AddrSpace() function in addrspace.cc to use bitmap to manage free page frames. In Exec_Systemcall function, get file name and file size and then load the executable file for new process, then allocate memory for new process and run new process.
+
+3.Join()
+How to test ?
+    ./userprog/nachos  -x ./test/join
+    Output file: ./test/join.out
+
+Which code files we modified?
+    ./userprog/exception.cc
+    ./userprog/progtest.cc
+    ./userprog/addrspace.cc
+    ./userprog/addrspace.h
+    ./test/fork.c
+    ./thread/system.h
+
+How to impliment?
+    Add a ProcessControlBlock class in addrspace.h. We put the Pid and
+    Semaphore * parentBlockSem in this PCB.
+    Add a ProcessTable in system.h to manege all of the PCB in system.
+    When user program call system call Join(), nachos find the child PCB in
+    process table, and make the parent thread wait on the semaphore of child,
+    until the child exit and wake up the parent thread.
+
+
+4.Exit()
+How to test?
+   From the code folder of nachos run:
+   ./userprog/nachos -rs 1000 -x ./test/exitAndJoin
+   In this program the main thread forks two processes. Each process executes
+   a different function that loops a determined number of times. After that,
+   the main thread calls the Join system call with the first child as an
+   argument and sleeps until his first child thread finishes. Now the first
+   thread executes, finishes and return a value to it's parent calling the
+   Exit system call, which also wakes up the main thread. Now the main thread
+   calls the Join system call and it happens the same as with the first child 
+   thread but with the second thread instead. At the end the main thread 
+   verifies it the returned values are correct and display them on the screen.
+   
+Which code files we modified?
+    ./userprog/exception.cc
+    ./userprog/addrspace.cc
+    ./userprog/addrspace.h
+    ./test/exitAndJoin.c
+    ./thread/system.h
+
+
+How to implement?
+   The exit system call is implemented by first checking if the thread that is
+   about to exit has a process that has called the Join system call before. In
+   case this check results true, the system call returns the status value of
+   exit setting a variable for this purpose on the Process Control Block of
+   the thread that is waiting for this process to finish execution. Also the
+   system call signals a semaphore that is used to wake up the process that
+   called Join system call previously. After this, the Exit system call deletes 
+   the process from the Process Table, and calls for the Thread::Finish() 
+   procedure to delete it from the scheduler queue and deallocate space.
+
+
+5.Kill()
+How to test?
+    ./userprog/nachos -x ./test/kill
+    
+Which code files we modified?
+    ./userprog/exception.cc
+    ./userprog/addrspace.cc
+    ./userprog/addrspace.h
+    ./test/killAndExit.c
+    ./thread/system.h
+
+
+How to implement?
+   The Kill system call it is very similar to Exit system call, however, there
+   are some important changes that make it work in a different manner. First,
+   the system call checks if the process that has been passed as the argument
+   exists in the system. If it does not, the system call returns a -1 value
+   and prints a message. But if the process exists in the system, the system
+   call does all the job that the Exit system call delegates on the
+   Thread::Finish() since the semantics of the Kill system call does not allow
+   the scheduler to change the process that is calling the Kill system call.
+   Also the system call deletes the entry in the Process Table corresponding
+   to the killed process and it returns a value of 0 if there are no errors.
+
+6.Yield()
+How to test? 
+./userprog/nachos -x ./test/yield
+
+How to implement?
+   This system call just calls the Thread::Yield procedure to relinquish the
+   CPU time to other processes.
+
+
+
+

@@ -1,0 +1,102 @@
+I. Requirements:
+
+We must implement virtual memory in nachos, so that it can run large programs with only 32 pages of physical memory.
+
+II. Design:
+
+Virtual Memory:
+
+On a page fault exception, look for an available space in physical memory.
+If physical memory is full, select a page to evict.
+If the page is dirty, write it to the swapfile.
+Invalidate that page in the pagetable. And update the location of that page in pagetable.
+Read the needed virtual page from the executable or swapfile.
+When a process exits, clear its pages from the physical memory and swapfile.
+When a child process is forked, copy the pages in memory and in swap file of parent process to swap file.
+
+We use FIFO to swap out frames.
+
+
+
+III. Implementation:
+
+            + Files Modified
+
+addrspace.h
+addrspace.cc
+exception.cc
+system.h
+system.cc
+
+            + Data Structures added, and the file they were added to.
+translation
+{
+    struct PageTableEntry{
+        int virtualPage;
+        int physicalPage;
+        bool valid;
+        bool readOnly;
+        bool use;
+        bool dirty;
+        diskLocation location;
+        int offset;
+        int swap;
+    };
+
+
+}
+system
+{
+
+    struct IPTEntry{
+        int virtualPage;
+        int physicalPage;
+        bool valid;
+        bool readOnly;
+        bool use;
+        bool dirty;
+        AddrSpace* id;
+    };
+
+    IPTEntry ipt[NumPhysPages];
+    int fifo[];
+    int fifoSize;
+    OpenFile* swapFile;
+    BitMap* swapBitMap;
+    bool doRandom;
+    Lock* iptLock;
+    int nextMailbox;
+}
+
+
+addrspace
+{
+    OpenFile *spaceExecutable;
+}
+
+            + Functions added and in which file.
+
+exception
+{
+    int handleMemoryFull()
+}
+
+
+IV. How to test?
+
+./nachos -x ../test/fork
+output: ./test/fork.out
+
+./nachos -x ../test/exec
+output: ./test/exec.out
+
+./nachos -x ../test/matmult
+output: ./test/matmult.out
+
+
+
+
+
+
+    
+    

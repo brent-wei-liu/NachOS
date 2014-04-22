@@ -1,0 +1,26 @@
+Loaded Program: [496] code | [48] data | [0] bss
+System Call: [0] invoked [Fork]
+Memory Usage Rate = 10.16%
+Memory Usage Rate = 20.31%
+Process [0] Fork: start at address [240] with [13] pages memory
+PID (1) assigned for new thread
+Forking thread "forked thread" with func = 0x804db02, arg = 134721776
+Putting thread forked thread on ready list.
+I am the Parent!
+System Call: [0] invoked [Yield]
+Yielding thread "main"
+Putting thread main on ready list.
+Switching from thread "main" to thread "forked thread"
+I am the child
+I am the child
+I am the child
+I am the child
+Machine halting!
+
+Ticks: total 141, idle 0, system 30, user 111
+Disk I/O: reads 0, writes 0
+Console I/O: reads 0, writes 0
+Paging: faults 0
+Network I/O: packets received 0, sent 0
+
+Cleaning up...

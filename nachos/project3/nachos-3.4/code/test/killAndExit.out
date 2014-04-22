@@ -1,0 +1,50 @@
+Loaded Program: [576] code | [80] data | [0] bss
+I'm parent
+I'm parent
+I'm parent
+System Call: [0] invoked [Fork]
+Memory Usage Rate = 10.94%
+Memory Usage Rate = 21.88%
+Process [0] Fork: start at address [240] with [14] pages memory
+PID (1) assigned for new thread
+Forking thread "forked thread" with func = 0x804db0a, arg = 134721864
+Putting thread forked thread on ready list.
+Yielding thread "main"
+Putting thread main on ready list.
+Switching from thread "main" to thread "forked thread"
+I'm child
+I'm child
+I'm child
+I'm child
+I'm child
+I'm child
+Yielding thread "forked thread"
+Putting thread forked thread on ready list.
+Switching from thread "forked thread" to thread "main"
+Now in thread "main"
+System Call: [0] invoked [Kill]
+System Call: 0 invoked Kill
+Process 0 killed process 1
+Yielding thread "main"
+Deleting thread "killed:forked thread  current:main"
+I'm parent second iteration
+I'm parent second iteration
+Yielding thread "main"
+I'm parent second iteration
+SC_Exit(1), initiated by user program.
+System Call: 0 invoked Exit
+Finishing thread "main"
+Finishing AddrSpace!
+Memory Usage Rate = 10.94%
+Sleeping thread "main"
+No threads ready or runnable, and no pending interrupts.
+Assuming the program completed.
+Machine halting!
+
+Ticks: total 329, idle 31, system 70, user 228
+Disk I/O: reads 0, writes 0
+Console I/O: reads 0, writes 0
+Paging: faults 0
+Network I/O: packets received 0, sent 0
+
+Cleaning up...

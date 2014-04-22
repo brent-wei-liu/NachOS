@@ -1,0 +1,1056 @@
+Loaded Program: [416] code | [16] data | [0] bss [12]numPages
+L [0]: [0] -> [0]
+L [0]: [2] -> [1]
+L [0]: [11] -> [2]
+L [0]: [1] -> [3]
+System Call: [0] invoked Fork
+Process [0] Fork: start at address [0xf0] with [12] pages memory
+System Call: [0] invoked Yield
+L [1]: [1] -> [4]
+L [1]: [11] -> [5]
+L [1]: [2] -> [6]
+L [1]: [0] -> [7]
+System Call: [1] invoked Exec.
+L [1]: [3] -> [8]
+Exec Program: 1 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [1] invoked Yield
+System Call: [0] invoked Fork
+Process [0] Fork: start at address [0xf0] with [12] pages memory
+System Call: [0] invoked Yield
+L [2]: [0] -> [9]
+L [2]: [1] -> [10]
+L [2]: [14] -> [11]
+L [2]: [2] -> [12]
+L [2]: [3] -> [13]
+L [2]: [4] -> [14]
+L [2]: [5] -> [15]
+L [2]: [6] -> [16]
+System Call: [2] invoked Exit
+Process [2] exits with [0]
+System Call: [1] invoked Fork
+Process [1] Fork: start at address [0xf0] with [12] pages memory
+System Call: [1] invoked Yield
+L [3]: [1] -> [9]
+L [3]: [11] -> [10]
+L [3]: [2] -> [11]
+L [3]: [0] -> [12]
+System Call: [3] invoked Exec.
+L [3]: [3] -> [13]
+Exec Program: 3 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [3] invoked Yield
+System Call: [0] invoked Fork
+Process [0] Fork: start at address [0xf0] with [12] pages memory
+System Call: [0] invoked Yield
+L [2]: [1] -> [14]
+L [2]: [11] -> [15]
+L [2]: [2] -> [16]
+L [2]: [0] -> [17]
+System Call: [2] invoked Exec.
+L [2]: [3] -> [18]
+Exec Program: 2 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [2] invoked Yield
+System Call: [1] invoked Fork
+Process [1] Fork: start at address [0xf0] with [12] pages memory
+System Call: [1] invoked Yield
+L [4]: [0] -> [19]
+L [4]: [1] -> [20]
+L [4]: [14] -> [21]
+L [4]: [2] -> [22]
+L [4]: [3] -> [23]
+L [4]: [4] -> [24]
+L [4]: [5] -> [25]
+L [4]: [6] -> [26]
+System Call: [4] invoked Exit
+Process [4] exits with [0]
+System Call: [3] invoked Fork
+Process [3] Fork: start at address [0xf0] with [12] pages memory
+System Call: [3] invoked Yield
+L [5]: [1] -> [19]
+L [5]: [11] -> [20]
+L [5]: [2] -> [21]
+L [5]: [0] -> [22]
+System Call: [5] invoked Exec.
+L [5]: [3] -> [23]
+Exec Program: 5 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [5] invoked Yield
+System Call: [0] invoked Fork
+Process [0] Fork: start at address [0xf0] with [12] pages memory
+System Call: [0] invoked Yield
+L [6]: [0] -> [24]
+L [6]: [1] -> [25]
+L [6]: [14] -> [26]
+L [6]: [2] -> [27]
+L [6]: [3] -> [28]
+L [6]: [4] -> [29]
+L [6]: [5] -> [30]
+L [6]: [6] -> [31]
+System Call: [6] invoked Exit
+Process [6] exits with [0]
+System Call: [2] invoked Fork
+Process [2] Fork: start at address [0xf0] with [12] pages memory
+System Call: [2] invoked Yield
+L [7]: [1] -> [24]
+L [7]: [11] -> [25]
+L [7]: [2] -> [26]
+L [7]: [0] -> [27]
+System Call: [7] invoked Exec.
+L [7]: [3] -> [28]
+Exec Program: 7 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [7] invoked Yield
+System Call: [1] invoked Fork
+Process [1] Fork: start at address [0xf0] with [12] pages memory
+System Call: [1] invoked Yield
+L [4]: [1] -> [29]
+L [4]: [11] -> [30]
+L [4]: [2] -> [31]
+E [4]: [0]
+L [4]: [0] -> [0]
+System Call: [4] invoked Exec.
+E [4]: [1]
+L [4]: [3] -> [1]
+Exec Program: 4 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [4] invoked Yield
+System Call: [3] invoked Fork
+Process [3] Fork: start at address [0xf0] with [12] pages memory
+System Call: [3] invoked Yield
+S [8]: [2]
+L [8]: [0] -> [2]
+E [8]: [3]
+L [8]: [1] -> [3]
+E [8]: [4]
+L [8]: [14] -> [4]
+S [8]: [5]
+L [8]: [2] -> [5]
+E [8]: [6]
+L [8]: [3] -> [6]
+E [8]: [7]
+L [8]: [4] -> [7]
+E [8]: [8]
+L [8]: [5] -> [8]
+E [8]: [9]
+L [8]: [6] -> [9]
+System Call: [8] invoked Exit
+Process [8] exits with [0]
+System Call: [5] invoked Fork
+Process [5] Fork: start at address [0xf0] with [12] pages memory
+System Call: [5] invoked Yield
+L [9]: [1] -> [2]
+L [9]: [11] -> [3]
+L [9]: [2] -> [4]
+L [9]: [0] -> [5]
+System Call: [9] invoked Exec.
+L [9]: [3] -> [6]
+Exec Program: 9 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [9] invoked Yield
+L [0]: [1] -> [7]
+L [0]: [2] -> [8]
+L [0]: [11] -> [9]
+System Call: [0] invoked Fork
+Process [0] Fork: start at address [0xf0] with [12] pages memory
+System Call: [0] invoked Yield
+S [6]: [10]
+L [6]: [1] -> [10]
+E [6]: [11]
+L [6]: [11] -> [11]
+E [6]: [12]
+L [6]: [2] -> [12]
+S [6]: [3]
+L [6]: [0] -> [3]
+System Call: [6] invoked Exec.
+E [6]: [4]
+L [6]: [3] -> [4]
+Exec Program: 6 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [6] invoked Yield
+System Call: [2] invoked Fork
+Process [2] Fork: start at address [0xf0] with [12] pages memory
+System Call: [2] invoked Yield
+E [10]: [5]
+L [10]: [0] -> [5]
+E [10]: [6]
+L [10]: [1] -> [6]
+E [10]: [7]
+L [10]: [14] -> [7]
+E [10]: [8]
+L [10]: [2] -> [8]
+S [10]: [9]
+L [10]: [3] -> [9]
+E [10]: [10]
+L [10]: [4] -> [10]
+S [10]: [11]
+L [10]: [5] -> [11]
+E [10]: [12]
+L [10]: [6] -> [12]
+System Call: [10] invoked Exit
+Process [10] exits with [0]
+System Call: [7] invoked Fork
+Process [7] Fork: start at address [0xf0] with [12] pages memory
+System Call: [7] invoked Yield
+L [11]: [1] -> [5]
+L [11]: [11] -> [6]
+L [11]: [2] -> [7]
+L [11]: [0] -> [8]
+System Call: [11] invoked Exec.
+L [11]: [3] -> [9]
+Exec Program: 11 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [11] invoked Yield
+L [1]: [1] -> [10]
+L [1]: [2] -> [11]
+L [1]: [11] -> [12]
+System Call: [1] invoked Fork
+Process [1] Fork: start at address [0xf0] with [12] pages memory
+System Call: [1] invoked Yield
+E [12]: [3]
+L [12]: [0] -> [3]
+E [12]: [4]
+L [12]: [1] -> [4]
+E [12]: [5]
+L [12]: [14] -> [5]
+S [12]: [6]
+L [12]: [2] -> [6]
+E [12]: [7]
+L [12]: [3] -> [7]
+E [12]: [8]
+L [12]: [4] -> [8]
+E [12]: [9]
+L [12]: [5] -> [9]
+E [12]: [10]
+L [12]: [6] -> [10]
+System Call: [12] invoked Exit
+Process [12] exits with [0]
+System Call: [4] invoked Fork
+Process [4] Fork: start at address [0xf0] with [12] pages memory
+System Call: [4] invoked Yield
+L [13]: [1] -> [3]
+L [13]: [11] -> [4]
+L [13]: [2] -> [5]
+L [13]: [0] -> [6]
+System Call: [13] invoked Exec.
+L [13]: [3] -> [7]
+Exec Program: 13 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [13] invoked Yield
+L [3]: [1] -> [8]
+L [3]: [2] -> [9]
+L [3]: [11] -> [10]
+System Call: [3] invoked Fork
+Process [3] Fork: start at address [0xf0] with [12] pages memory
+System Call: [3] invoked Yield
+E [8]: [11]
+L [8]: [1] -> [11]
+S [8]: [12]
+L [8]: [11] -> [12]
+E [8]: [5]
+L [8]: [2] -> [5]
+E [8]: [6]
+L [8]: [0] -> [6]
+System Call: [8] invoked Exec.
+E [8]: [7]
+L [8]: [3] -> [7]
+Exec Program: 8 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [8] invoked Yield
+System Call: [5] invoked Fork
+Process [5] Fork: start at address [0xf0] with [12] pages memory
+System Call: [5] invoked Yield
+E [14]: [8]
+L [14]: [0] -> [8]
+E [14]: [9]
+L [14]: [1] -> [9]
+S [14]: [10]
+L [14]: [14] -> [10]
+E [14]: [11]
+L [14]: [2] -> [11]
+S [14]: [12]
+L [14]: [3] -> [12]
+E [14]: [3]
+L [14]: [4] -> [3]
+S [14]: [4]
+L [14]: [5] -> [4]
+E [14]: [5]
+L [14]: [6] -> [5]
+System Call: [14] invoked Exit
+Process [14] exits with [0]
+L [9]: [2] -> [3]
+L [9]: [11] -> [4]
+System Call: [9] invoked Fork
+Process [9] Fork: start at address [0xf0] with [12] pages memory
+System Call: [9] invoked Yield
+L [15]: [1] -> [5]
+L [15]: [11] -> [8]
+L [15]: [2] -> [9]
+L [15]: [0] -> [10]
+System Call: [15] invoked Exec.
+L [15]: [3] -> [11]
+Exec Program: 15 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [15] invoked Yield
+L [0]: [1] -> [12]
+E [0]: [6]
+L [0]: [2] -> [6]
+E [0]: [7]
+L [0]: [11] -> [7]
+S [0]: [8]
+L [0]: [3] -> [8]
+E [0]: [9]
+L [0]: [0] -> [9]
+System Call: [0] invoked Exit
+Process [0] exits with [0]
+L [16]: [0] -> [6]
+L [16]: [1] -> [7]
+L [16]: [14] -> [8]
+L [16]: [2] -> [9]
+L [16]: [3] -> [12]
+E [16]: [10]
+L [16]: [4] -> [10]
+E [16]: [3]
+L [16]: [5] -> [3]
+S [16]: [4]
+L [16]: [6] -> [4]
+System Call: [16] invoked Exit
+Process [16] exits with [0]
+L [6]: [1] -> [3]
+L [6]: [2] -> [4]
+L [6]: [11] -> [6]
+System Call: [6] invoked Fork
+Process [6] Fork: start at address [0xf0] with [12] pages memory
+System Call: [6] invoked Yield
+L [17]: [1] -> [7]
+L [17]: [11] -> [8]
+L [17]: [2] -> [9]
+L [17]: [0] -> [10]
+System Call: [17] invoked Exec.
+L [17]: [3] -> [12]
+Exec Program: 17 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [17] invoked Yield
+System Call: [2] invoked Fork
+Process [2] Fork: start at address [0xf0] with [12] pages memory
+System Call: [2] invoked Yield
+E [10]: [5]
+L [10]: [1] -> [5]
+S [10]: [6]
+L [10]: [11] -> [6]
+E [10]: [7]
+L [10]: [2] -> [7]
+S [10]: [8]
+L [10]: [0] -> [8]
+System Call: [10] invoked Exec.
+E [10]: [9]
+L [10]: [3] -> [9]
+Exec Program: 10 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [10] invoked Yield
+System Call: [7] invoked Fork
+Process [7] Fork: start at address [0xf0] with [12] pages memory
+System Call: [7] invoked Yield
+E [18]: [12]
+L [18]: [0] -> [12]
+S [18]: [6]
+L [18]: [1] -> [6]
+E [18]: [7]
+L [18]: [14] -> [7]
+E [18]: [8]
+L [18]: [2] -> [8]
+E [18]: [9]
+L [18]: [3] -> [9]
+E [18]: [6]
+L [18]: [4] -> [6]
+S [18]: [7]
+L [18]: [5] -> [7]
+E [18]: [8]
+L [18]: [14] -> [8]
+S [18]: [9]
+L [18]: [2] -> [9]
+E [18]: [12]
+L [18]: [6] -> [12]
+E [18]: [10]
+L [18]: [0] -> [10]
+System Call: [18] invoked Exit
+Process [18] exits with [0]
+L [11]: [1] -> [6]
+L [11]: [2] -> [7]
+L [11]: [11] -> [8]
+System Call: [11] invoked Fork
+Process [11] Fork: start at address [0xf0] with [12] pages memory
+System Call: [11] invoked Yield
+L [19]: [1] -> [9]
+L [19]: [11] -> [10]
+L [19]: [2] -> [12]
+E [19]: [3]
+L [19]: [0] -> [3]
+System Call: [19] invoked Exec.
+E [19]: [4]
+L [19]: [3] -> [4]
+Exec Program: 19 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [19] invoked Yield
+E [1]: [3]
+L [1]: [1] -> [3]
+E [1]: [4]
+L [1]: [2] -> [4]
+E [1]: [6]
+L [1]: [11] -> [6]
+E [1]: [7]
+L [1]: [3] -> [7]
+S [1]: [8]
+L [1]: [0] -> [8]
+System Call: [1] invoked Exit
+Process [1] exits with [0]
+L [12]: [1] -> [3]
+L [12]: [11] -> [4]
+L [12]: [2] -> [6]
+L [12]: [0] -> [7]
+System Call: [12] invoked Exec.
+L [12]: [3] -> [8]
+Exec Program: 12 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [12] invoked Yield
+System Call: [4] invoked Fork
+Process [4] Fork: start at address [0xf0] with [12] pages memory
+System Call: [4] invoked Yield
+E [20]: [9]
+L [20]: [0] -> [9]
+S [20]: [10]
+L [20]: [1] -> [10]
+E [20]: [12]
+L [20]: [14] -> [12]
+E [20]: [5]
+L [20]: [2] -> [5]
+S [20]: [4]
+L [20]: [3] -> [4]
+E [20]: [6]
+L [20]: [4] -> [6]
+E [20]: [7]
+L [20]: [5] -> [7]
+E [20]: [8]
+L [20]: [6] -> [8]
+System Call: [20] invoked Exit
+Process [20] exits with [0]
+L [13]: [1] -> [4]
+L [13]: [2] -> [5]
+L [13]: [11] -> [6]
+System Call: [13] invoked Fork
+Process [13] Fork: start at address [0xf0] with [12] pages memory
+System Call: [13] invoked Yield
+L [21]: [1] -> [7]
+L [21]: [11] -> [8]
+L [21]: [2] -> [9]
+L [21]: [0] -> [10]
+System Call: [21] invoked Exec.
+L [21]: [3] -> [12]
+Exec Program: 21 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [21] invoked Yield
+E [3]: [9]
+L [3]: [1] -> [9]
+E [3]: [10]
+L [3]: [2] -> [10]
+E [3]: [12]
+L [3]: [11] -> [12]
+E [3]: [5]
+L [3]: [0] -> [5]
+System Call: [3] invoked Exit
+Process [3] exits with [0]
+L [22]: [0] -> [5]
+L [22]: [1] -> [9]
+L [22]: [14] -> [10]
+L [22]: [2] -> [12]
+L [22]: [3] -> [13]
+E [22]: [4]
+L [22]: [4] -> [4]
+S [22]: [6]
+L [22]: [5] -> [6]
+E [22]: [7]
+L [22]: [6] -> [7]
+System Call: [22] invoked Exit
+Process [22] exits with [0]
+L [8]: [1] -> [4]
+L [8]: [2] -> [5]
+L [8]: [11] -> [6]
+System Call: [8] invoked Fork
+Process [8] Fork: start at address [0xf0] with [12] pages memory
+System Call: [8] invoked Yield
+L [23]: [1] -> [7]
+L [23]: [11] -> [9]
+L [23]: [2] -> [10]
+L [23]: [0] -> [12]
+System Call: [23] invoked Exec.
+L [23]: [3] -> [13]
+Exec Program: 23 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [23] invoked Yield
+System Call: [5] invoked Exit
+Process [5] exits with [0]
+L [14]: [1] -> [19]
+L [14]: [11] -> [20]
+L [14]: [2] -> [21]
+L [14]: [0] -> [22]
+System Call: [14] invoked Exec.
+L [14]: [3] -> [23]
+Exec Program: 14 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [14] invoked Yield
+S [9]: [8]
+L [9]: [2] -> [8]
+E [9]: [4]
+L [9]: [11] -> [4]
+E [9]: [5]
+L [9]: [3] -> [5]
+S [9]: [6]
+L [9]: [0] -> [6]
+System Call: [9] invoked Exit
+Process [9] exits with [0]
+L [24]: [0] -> [2]
+L [24]: [1] -> [4]
+L [24]: [14] -> [5]
+L [24]: [2] -> [6]
+L [24]: [3] -> [8]
+E [24]: [7]
+L [24]: [4] -> [7]
+S [24]: [8]
+L [24]: [5] -> [8]
+S [24]: [9]
+L [24]: [6] -> [9]
+System Call: [24] invoked Exit
+Process [24] exits with [0]
+L [15]: [1] -> [2]
+L [15]: [2] -> [4]
+L [15]: [11] -> [5]
+L [15]: [0] -> [6]
+System Call: [15] invoked Exit
+Process [15] exits with [0]
+L [0]: [1] -> [2]
+L [0]: [11] -> [4]
+L [0]: [2] -> [5]
+L [0]: [0] -> [6]
+System Call: [0] invoked Exec.
+L [0]: [3] -> [7]
+Exec Program: 0 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [0] invoked Yield
+L [6]: [1] -> [8]
+L [6]: [2] -> [9]
+L [6]: [11] -> [11]
+System Call: [6] invoked Fork
+Process [6] Fork: start at address [0xf0] with [12] pages memory
+System Call: [6] invoked Yield
+E [16]: [10]
+L [16]: [0] -> [10]
+E [16]: [12]
+L [16]: [1] -> [12]
+E [16]: [9]
+L [16]: [14] -> [9]
+E [16]: [10]
+L [16]: [2] -> [10]
+E [16]: [12]
+L [16]: [3] -> [12]
+E [16]: [5]
+L [16]: [4] -> [5]
+S [16]: [5]
+L [16]: [5] -> [5]
+E [16]: [2]
+L [16]: [6] -> [2]
+S [16]: [4]
+L [16]: [0] -> [4]
+System Call: [16] invoked Exit
+Process [16] exits with [0]
+L [17]: [1] -> [2]
+L [17]: [2] -> [4]
+L [17]: [11] -> [5]
+System Call: [17] invoked Fork
+Process [17] Fork: start at address [0xf0] with [12] pages memory
+System Call: [17] invoked Yield
+L [25]: [1] -> [9]
+L [25]: [11] -> [10]
+L [25]: [2] -> [12]
+S [25]: [5]
+L [25]: [0] -> [5]
+System Call: [25] invoked Exec.
+E [25]: [6]
+L [25]: [3] -> [6]
+Exec Program: 25 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [25] invoked Yield
+System Call: [2] invoked Exit
+Process [2] exits with [0]
+L [26]: [0] -> [14]
+L [26]: [1] -> [15]
+L [26]: [14] -> [16]
+L [26]: [2] -> [17]
+L [26]: [3] -> [18]
+E [26]: [7]
+L [26]: [4] -> [7]
+E [26]: [8]
+L [26]: [5] -> [8]
+E [26]: [9]
+L [26]: [6] -> [9]
+System Call: [26] invoked Exit
+Process [26] exits with [0]
+L [10]: [1] -> [7]
+L [10]: [2] -> [8]
+L [10]: [11] -> [9]
+System Call: [10] invoked Fork
+Process [10] Fork: start at address [0xf0] with [12] pages memory
+System Call: [10] invoked Yield
+L [27]: [1] -> [14]
+L [27]: [11] -> [15]
+L [27]: [2] -> [16]
+L [27]: [0] -> [17]
+System Call: [27] invoked Exec.
+L [27]: [3] -> [18]
+Exec Program: 27 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [27] invoked Yield
+System Call: [7] invoked Exit
+Process [7] exits with [0]
+L [18]: [1] -> [24]
+L [18]: [11] -> [25]
+L [18]: [2] -> [26]
+L [18]: [0] -> [27]
+System Call: [18] invoked Exec.
+L [18]: [3] -> [28]
+Exec Program: 18 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [18] invoked Yield
+S [11]: [11]
+L [11]: [1] -> [11]
+S [11]: [10]
+L [11]: [2] -> [10]
+E [11]: [12]
+L [11]: [11] -> [12]
+S [11]: [9]
+L [11]: [3] -> [9]
+E [11]: [10]
+L [11]: [0] -> [10]
+System Call: [11] invoked Exit
+Process [11] exits with [0]
+L [28]: [0] -> [9]
+L [28]: [1] -> [10]
+L [28]: [14] -> [11]
+L [28]: [2] -> [12]
+E [28]: [12]
+L [28]: [3] -> [12]
+E [28]: [5]
+L [28]: [2] -> [5]
+E [28]: [5]
+L [28]: [4] -> [5]
+E [28]: [2]
+L [28]: [2] -> [2]
+E [28]: [4]
+L [28]: [5] -> [4]
+E [28]: [2]
+L [28]: [6] -> [2]
+S [28]: [4]
+L [28]: [2] -> [4]
+System Call: [28] invoked Exit
+Process [28] exits with [0]
+L [19]: [1] -> [2]
+L [19]: [2] -> [4]
+L [19]: [11] -> [5]
+L [19]: [3] -> [9]
+L [19]: [0] -> [10]
+System Call: [19] invoked Exit
+Process [19] exits with [0]
+L [1]: [0] -> [2]
+L [1]: [1] -> [4]
+L [1]: [14] -> [5]
+L [1]: [2] -> [9]
+L [1]: [3] -> [10]
+L [1]: [4] -> [11]
+L [1]: [5] -> [12]
+S [1]: [5]
+L [1]: [6] -> [5]
+E [1]: [9]
+L [1]: [14] -> [9]
+S [1]: [10]
+L [1]: [2] -> [10]
+System Call: [1] invoked Exit
+Process [1] exits with [0]
+L [12]: [2] -> [2]
+L [12]: [11] -> [4]
+System Call: [12] invoked Fork
+Process [12] Fork: start at address [0xf0] with [12] pages memory
+System Call: [12] invoked Yield
+L [29]: [1] -> [5]
+L [29]: [11] -> [9]
+L [29]: [2] -> [10]
+L [29]: [0] -> [11]
+System Call: [29] invoked Exec.
+L [29]: [3] -> [12]
+Exec Program: 29 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [29] invoked Yield
+System Call: [4] invoked Exit
+Process [4] exits with [0]
+L [20]: [1] -> [0]
+L [20]: [11] -> [1]
+L [20]: [2] -> [29]
+L [20]: [0] -> [30]
+System Call: [20] invoked Exec.
+L [20]: [3] -> [31]
+Exec Program: 20 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [20] invoked Yield
+E [13]: [12]
+L [13]: [1] -> [12]
+E [13]: [5]
+L [13]: [2] -> [5]
+E [13]: [6]
+L [13]: [11] -> [6]
+E [13]: [18]
+L [13]: [3] -> [18]
+E [13]: [24]
+L [13]: [0] -> [24]
+System Call: [13] invoked Exit
+Process [13] exits with [0]
+L [30]: [0] -> [5]
+L [30]: [1] -> [6]
+L [30]: [14] -> [12]
+L [30]: [2] -> [18]
+L [30]: [3] -> [24]
+S [30]: [25]
+L [30]: [4] -> [25]
+E [30]: [26]
+L [30]: [5] -> [26]
+E [30]: [27]
+L [30]: [6] -> [27]
+System Call: [30] invoked Exit
+Process [30] exits with [0]
+L [21]: [1] -> [5]
+L [21]: [2] -> [6]
+L [21]: [11] -> [12]
+L [21]: [3] -> [18]
+L [21]: [0] -> [24]
+System Call: [21] invoked Exit
+Process [21] exits with [0]
+L [3]: [1] -> [5]
+L [3]: [11] -> [6]
+L [3]: [2] -> [12]
+L [3]: [0] -> [18]
+System Call: [3] invoked Exec.
+L [3]: [3] -> [24]
+Exec Program: 3 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [3] invoked Yield
+L [8]: [1] -> [25]
+L [8]: [2] -> [26]
+L [8]: [11] -> [27]
+E [8]: [2]
+L [8]: [3] -> [2]
+S [8]: [4]
+L [8]: [0] -> [4]
+System Call: [8] invoked Exit
+Process [8] exits with [0]
+L [22]: [0] -> [2]
+L [22]: [1] -> [4]
+L [22]: [14] -> [25]
+L [22]: [2] -> [26]
+L [22]: [3] -> [27]
+E [22]: [5]
+L [22]: [4] -> [5]
+S [22]: [9]
+L [22]: [5] -> [9]
+E [22]: [10]
+L [22]: [6] -> [10]
+System Call: [22] invoked Exit
+Process [22] exits with [0]
+L [23]: [1] -> [2]
+L [23]: [2] -> [4]
+L [23]: [11] -> [5]
+L [23]: [0] -> [9]
+System Call: [23] invoked Exit
+Process [23] exits with [0]
+L [5]: [0] -> [2]
+L [5]: [1] -> [4]
+L [5]: [14] -> [5]
+L [5]: [2] -> [9]
+L [5]: [3] -> [10]
+L [5]: [4] -> [13]
+L [5]: [5] -> [25]
+L [5]: [6] -> [26]
+System Call: [5] invoked Exit
+Process [5] exits with [0]
+System Call: [14] invoked Exit
+Process [14] exits with [0]
+L [9]: [0] -> [2]
+L [9]: [1] -> [4]
+L [9]: [14] -> [5]
+L [9]: [2] -> [9]
+L [9]: [3] -> [10]
+L [9]: [4] -> [13]
+L [9]: [5] -> [19]
+L [9]: [6] -> [20]
+System Call: [9] invoked Exit
+Process [9] exits with [0]
+L [0]: [1] -> [2]
+L [0]: [2] -> [4]
+L [0]: [11] -> [5]
+System Call: [0] invoked Fork
+Process [0] Fork: start at address [0xf0] with [12] pages memory
+System Call: [0] invoked Yield
+L [15]: [1] -> [9]
+L [15]: [11] -> [10]
+L [15]: [2] -> [13]
+L [15]: [0] -> [19]
+System Call: [15] invoked Exec.
+L [15]: [3] -> [20]
+Exec Program: 15 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [15] invoked Yield
+L [6]: [1] -> [21]
+L [6]: [2] -> [22]
+L [6]: [11] -> [23]
+L [6]: [3] -> [25]
+L [6]: [0] -> [26]
+System Call: [6] invoked Exit
+Process [6] exits with [0]
+L [16]: [1] -> [21]
+L [16]: [11] -> [22]
+L [16]: [2] -> [23]
+L [16]: [0] -> [25]
+System Call: [16] invoked Exec.
+L [16]: [3] -> [26]
+Exec Program: 16 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [16] invoked Yield
+L [17]: [1] -> [27]
+E [17]: [11]
+L [17]: [2] -> [11]
+E [17]: [12]
+L [17]: [11] -> [12]
+S [17]: [5]
+L [17]: [3] -> [5]
+E [17]: [4]
+L [17]: [0] -> [4]
+System Call: [17] invoked Exit
+Process [17] exits with [0]
+L [24]: [0] -> [4]
+L [24]: [1] -> [5]
+L [24]: [14] -> [11]
+L [24]: [2] -> [12]
+L [24]: [3] -> [27]
+E [24]: [5]
+L [24]: [4] -> [5]
+E [24]: [9]
+L [24]: [5] -> [9]
+S [24]: [10]
+L [24]: [6] -> [10]
+System Call: [24] invoked Exit
+Process [24] exits with [0]
+L [25]: [1] -> [4]
+L [25]: [2] -> [5]
+L [25]: [11] -> [9]
+L [25]: [3] -> [10]
+L [25]: [0] -> [11]
+System Call: [25] invoked Exit
+Process [25] exits with [0]
+L [2]: [1] -> [4]
+L [2]: [11] -> [5]
+L [2]: [2] -> [9]
+L [2]: [0] -> [10]
+System Call: [2] invoked Exec.
+L [2]: [3] -> [11]
+Exec Program: 2 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [2] invoked Yield
+L [10]: [11] -> [12]
+L [10]: [3] -> [27]
+E [10]: [13]
+L [10]: [0] -> [13]
+System Call: [10] invoked Exit
+Process [10] exits with [0]
+L [26]: [0] -> [7]
+L [26]: [1] -> [8]
+L [26]: [14] -> [12]
+L [26]: [2] -> [13]
+L [26]: [3] -> [27]
+E [26]: [25]
+L [26]: [4] -> [25]
+E [26]: [26]
+L [26]: [5] -> [26]
+E [26]: [2]
+L [26]: [6] -> [2]
+System Call: [26] invoked Exit
+Process [26] exits with [0]
+L [27]: [3] -> [2]
+System Call: [27] invoked Exit
+Process [27] exits with [0]
+L [7]: [0] -> [2]
+L [7]: [1] -> [7]
+L [7]: [14] -> [8]
+L [7]: [2] -> [12]
+L [7]: [3] -> [13]
+L [7]: [4] -> [14]
+L [7]: [5] -> [15]
+L [7]: [6] -> [16]
+System Call: [7] invoked Exit
+Process [7] exits with [0]
+L [18]: [1] -> [2]
+L [18]: [2] -> [7]
+L [18]: [11] -> [8]
+L [18]: [0] -> [12]
+System Call: [18] invoked Exit
+Process [18] exits with [0]
+L [1]: [1] -> [2]
+L [1]: [11] -> [7]
+L [1]: [2] -> [8]
+L [1]: [0] -> [12]
+System Call: [1] invoked Exec.
+L [1]: [3] -> [13]
+Exec Program: 1 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [1] invoked Yield
+L [12]: [2] -> [14]
+L [12]: [11] -> [15]
+L [12]: [3] -> [16]
+L [12]: [0] -> [17]
+System Call: [12] invoked Exit
+Process [12] exits with [0]
+L [11]: [0] -> [3]
+L [11]: [1] -> [14]
+L [11]: [14] -> [15]
+L [11]: [2] -> [16]
+L [11]: [3] -> [17]
+L [11]: [4] -> [25]
+L [11]: [5] -> [26]
+L [11]: [6] -> [27]
+System Call: [11] invoked Exit
+Process [11] exits with [0]
+L [29]: [1] -> [3]
+L [29]: [2] -> [14]
+L [29]: [11] -> [15]
+L [29]: [3] -> [16]
+L [29]: [0] -> [17]
+System Call: [29] invoked Exit
+Process [29] exits with [0]
+L [4]: [0] -> [3]
+L [4]: [1] -> [14]
+L [4]: [14] -> [15]
+L [4]: [2] -> [16]
+L [4]: [3] -> [17]
+L [4]: [4] -> [25]
+L [4]: [5] -> [26]
+L [4]: [6] -> [27]
+System Call: [4] invoked Exit
+Process [4] exits with [0]
+System Call: [20] invoked Exit
+Process [20] exits with [0]
+L [13]: [0] -> [0]
+L [13]: [1] -> [1]
+L [13]: [14] -> [3]
+L [13]: [2] -> [14]
+L [13]: [3] -> [15]
+L [13]: [4] -> [16]
+L [13]: [5] -> [17]
+L [13]: [6] -> [25]
+System Call: [13] invoked Exit
+Process [13] exits with [0]
+L [3]: [1] -> [0]
+L [3]: [2] -> [1]
+System Call: [3] invoked Exit
+Process [3] exits with [0]
+L [5]: [1] -> [0]
+L [5]: [11] -> [1]
+L [5]: [2] -> [3]
+L [5]: [0] -> [6]
+System Call: [5] invoked Exec.
+L [5]: [3] -> [14]
+Exec Program: 5 loading ["../test/memory"]
+Loaded Program: [384] code | [0] data | [512] bss [15]numPages
+System Call: [5] invoked Yield
+L [0]: [1] -> [15]
+L [0]: [2] -> [16]
+L [0]: [11] -> [17]
+L [0]: [3] -> [18]
+L [0]: [0] -> [24]
+System Call: [0] invoked Exit
+Process [0] exits with [0]
+L [8]: [0] -> [15]
+L [8]: [1] -> [16]
+L [8]: [14] -> [17]
+L [8]: [2] -> [18]
+L [8]: [3] -> [24]
+L [8]: [4] -> [25]
+L [8]: [5] -> [26]
+L [8]: [6] -> [27]
+System Call: [8] invoked Exit
+Process [8] exits with [0]
+L [15]: [1] -> [15]
+L [15]: [2] -> [16]
+L [15]: [11] -> [17]
+System Call: [15] invoked Exit
+Process [15] exits with [0]
+L [6]: [0] -> [15]
+L [6]: [1] -> [16]
+L [6]: [14] -> [17]
+L [6]: [2] -> [18]
+L [6]: [3] -> [19]
+L [6]: [4] -> [20]
+L [6]: [5] -> [24]
+L [6]: [6] -> [25]
+System Call: [6] invoked Exit
+Process [6] exits with [0]
+L [16]: [3] -> [15]
+L [16]: [0] -> [16]
+System Call: [16] invoked Exit
+My parent is dead (Exit)
+Process [16] exits with [0]
+L [9]: [0] -> [15]
+L [9]: [1] -> [16]
+L [9]: [14] -> [17]
+L [9]: [2] -> [18]
+L [9]: [3] -> [19]
+L [9]: [4] -> [20]
+L [9]: [5] -> [21]
+L [9]: [6] -> [22]
+System Call: [9] invoked Exit
+Process [9] exits with [0]
+System Call: [2] invoked Exit
+My parent is dead (Exit)
+Process [2] exits with [0]
+L [7]: [0] -> [4]
+L [7]: [1] -> [5]
+L [7]: [14] -> [9]
+L [7]: [2] -> [10]
+L [7]: [3] -> [11]
+L [7]: [4] -> [15]
+L [7]: [5] -> [16]
+L [7]: [6] -> [17]
+System Call: [7] invoked Exit
+Process [7] exits with [0]
+System Call: [1] invoked Exit
+My parent is dead (Exit)
+Process [1] exits with [0]
+L [3]: [0] -> [2]
+L [3]: [1] -> [4]
+L [3]: [14] -> [5]
+L [3]: [2] -> [7]
+L [3]: [3] -> [8]
+L [3]: [4] -> [9]
+L [3]: [5] -> [10]
+L [3]: [6] -> [11]
+System Call: [3] invoked Exit
+Process [3] exits with [0]
+System Call: [5] invoked Exit
+My parent is dead (Exit)
+Process [5] exits with [0]
+No threads ready or runnable, and no pending interrupts.
+Assuming the program completed.
+Machine halting!
+
+Ticks: total 80011, idle 0, system 1570, user 78441
+Disk I/O: reads 0, writes 0
+Console I/O: reads 0, writes 0
+Paging: faults 548
+Network I/O: packets received 0, sent 0
+
+Cleaning up...

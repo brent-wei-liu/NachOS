@@ -1,0 +1,44 @@
+Project 4 Extra Credit: Efficiency in Virtual Memory Systems
+
+This part of the project is optional. If you work toward this, you will receive extra credit. You can use this extra credit to offset the grades in your exams or other projects. The description follows:
+
+Make your implementation of virtual memory management efficient using two popular strategies. Extend the page allocation and page fault handler to allow for both copy-on-write and demand zero-filled page allocation. Both of these will increase run time efficiency and memory utilization. These are described below as Stage 7 and 8 of the project. Tests will be run to check the efficiency of these implementations by the grader.
+
+Stage 7 In this stage, you will extend your memory structures and page fault handler to support copy-on-write. This means that when you copy a page (as in a fork system call), that you do not actually copy the page. Instead, you:
+
+set the new page table entry to use the same physical page.
+mark the physical page as shared by the new page table entry. This probably requires that you maintain a structure to determine whether a physical page is currently shared (together with information that tells you which processes share that page).
+set the read only bit in the new page table entry, so that the machine will generate a fault (ReadOnlyException) on attempts to write to this page. If the page wasn't already being shared, also set the read only bit on the page table entry of the other process.
+When handling a fault caused by trying to write to this read-only page, you must:
+
+verify that this is a valid page (as for any other page fault) and that it is shared
+allocate a new physical page
+copy the contents of the old physical page to the new physical page
+update the faulting page table entry to point to the new physical page instead of the old one.
+unmark the old physical page as shared by the faulting page table entry
+You should be aware of the following things:
+
+More than two processes can share the same page (e.g. if the page is copied more than once).
+As a means for marking a page as shared, you will probably want to maintain a structure with a list of all page table entries which share each physical page.
+When a shared page gets moved to backing store, all of the page table entries referencing it must be updated.
+When only one reference to a shared page is left, the page is no longer shared.
+Reading from a shared page is OK, only attempts to write result in a copy.
+A page on backing store should not have to be loaded into physical memory to be shared (only to be copied).
+You must:
+
+Implement copy-on-write in your virtual memory system.
+Update your Fork system call to copy-on-write pages instead of simple copying them.
+Stage 8 In this stage, you will implement demand zero-filled pages. This is a technique where pages are not allocated, in either main memory or in backing store, until they are accessed. This is useful for pages of uninitialized data, such as the heap or stack.
+
+When the page is accessed for the first time, the page fault is handled by allocating a new page, which is then cleared (filled with zeros). The faulting page table entry is then updated to point to the new physical page. Up until now, a page was always either in memory or in the backing store. To do this, you will need to update your translationEntry to handle this new page state.
+
+You are to:
+
+Implement demand zero-filled pages.
+Update Fork and Exec system calls to allocate the process's stack as demand zero-filled pages.
+Required output for Extra credit
+
+Whenever a process writes to a shared page (and this page needs to be duplicated), print 
+D [pid]: [virtualPage]
+Whenever a process obtains a zero-filled demand page for the first time (i.e., when you allocate and zero the page out), print 
+Z [pid]: [virtualPage]
